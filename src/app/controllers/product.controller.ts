@@ -24,13 +24,13 @@ export class ProductController {
   @Get()
   @ApiOperationId('findProducts')
   async findProducts() {
-    const products = await getRepository(Product).find();
+    const products = await getRepository(Product).find({ order: { createdAt: "ASC" } });
     return new HttpResponseOK(products);
   }
 
   @Get('/:productId')
   @ApiOperationId('findByIdProducts')
-  @ValidatePathParam('productId', { type: 'number' })
+  @ValidatePathParam('productId', { type: 'string' })
   async findProductttById(ctx: Context) {
     const productById = await getRepository(Product).findOne(ctx.request.params.productId);
 
@@ -51,7 +51,7 @@ export class ProductController {
 
   @Patch('/:productId')
   @ApiOperationId('modifyProduct')
-  @ValidatePathParam('productId', { type: 'number' })
+  @ValidatePathParam('productId', { type: 'string' })
   @ValidateBody({ ...productSchema, required: ['updatedAt'] })
   async modifyProducttt(ctx: Context) {
     const product = await getRepository(Product).findOne(ctx.request.params.productId);
@@ -69,7 +69,7 @@ export class ProductController {
 
   @Delete('/:productId')
   @ApiOperationId('deleteProduct')
-  @ValidatePathParam('productId', { type: 'number' })
+  @ValidatePathParam('productId', { type: 'string' })
   async deleteProducttt(ctx: Context) {
     const producttt = await getRepository(Product).findOne(ctx.request.params.productId);
 
