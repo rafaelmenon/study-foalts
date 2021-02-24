@@ -9,10 +9,10 @@ import {
 } from '@foal/core';
 import { getSecretOrPrivateKey } from '@foal/jwt';
 import { sign } from 'jsonwebtoken';
-import { User } from '../entities';
+import { Users } from '../entities';
 
 export class LoginController {
-  @Post('/login')
+  @Post('/')
   @ValidateBody({
     additionalProperties: false,
     properties: {
@@ -23,7 +23,7 @@ export class LoginController {
     type: 'object'
   })
   async login(ctx: Context) {
-    const user = await User.findOne({ email: ctx.request.body.email });
+    const user = await Users.findOne({ email: ctx.request.body.email });
 
     if (!user) return new HttpResponseUnauthorized();
 

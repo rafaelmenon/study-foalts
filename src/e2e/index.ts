@@ -21,5 +21,4 @@ describe('The server', () => {
       .get('/')
       .expect(200);
   });
-
 });

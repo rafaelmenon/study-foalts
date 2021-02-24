@@ -27,7 +27,7 @@
     "@foal/core": "^2.0.0",
     "@foal/jwt": "^2.1.2",
     "@foal/typeorm": "^2.0.0",
-    "better-sqlite3": "~7.1.2",
+    "bcrypt": "^5.0.0",
     "jsonwebtoken": "^8.5.1",
     "mysql": "^2.18.1",
     "source-map-support": "~0.5.19",
