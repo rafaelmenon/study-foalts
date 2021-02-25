@@ -27,8 +27,10 @@
     "@foal/core": "^2.0.0",
     "@foal/jwt": "^2.1.2",
     "@foal/typeorm": "^2.0.0",
+    "amqplib": "^0.7.0",
     "bcrypt": "^5.0.0",
     "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.11.18",
     "mysql": "^2.18.1",
     "source-map-support": "~0.5.19",
     "typeorm": "0.2.26"

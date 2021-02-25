@@ -1,6 +1,8 @@
-import { controller, IAppController, Log, LogOptions } from '@foal/core';
+import { controller, IAppController, Log, Hook, Context } from '@foal/core';
 import { createConnection } from 'typeorm';
-import { ProductController, UsersController, LoginController } from './controllers';
+import { ProductController, UsersController, LoginController, GetLogsController } from './controllers';
+import { logSchema } from './services';
+// import './services/producer';
 
 @Log('AppController', {
   body: true,
@@ -8,11 +10,15 @@ import { ProductController, UsersController, LoginController } from './controlle
   params: true,
   query: true,
 })
+@Hook((ctx: Context) => {
+  logSchema(ctx)
+})
 export class AppController implements IAppController {
   subControllers = [
     controller('/products', ProductController),
     controller('/users', UsersController),
-    controller('/login', LoginController)
+    controller('/login', LoginController),
+    controller('/logs', GetLogsController)
   ];
 
   async init() {
